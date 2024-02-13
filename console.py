@@ -3,7 +3,7 @@
 import cmd
 import re
 from shlex import split
-from models import storage
+from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models.user import User
 from models.state import State
@@ -14,8 +14,8 @@ from models.review import Review
 
 
 def parse(arg):
-    curly_braces = re.search(r"\{(.*?)\}", arg)
-    brackets = re.search(r"\[(.*?)\]", arg)
+    curly_braces = re.search(r"\{(.*?)}", arg)
+    brackets = re.search(r"\[(.*?)]", arg)
     if curly_braces is None:
         if brackets is None:
             return [i.strip(",") for i in split(arg)]
@@ -116,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
         """Usage: destroy <class> <id> or <class>.destroy(<id>)
         Delete a class instance of a given id."""
         argl = parse(arg)
-        objdict = storage.all()
+        objdict = FileStorage.all()
         if len(argl) == 0:
             print("** class name missing **")
         elif argl[0] not in HBNBCommand.__classes:
@@ -127,7 +127,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
         else:
             del objdict["{}.{}".format(argl[0], argl[1])]
-            storage.save()
+            FileStorage.save()
 
     def do_all(self, arg):
         """Usage: all or all <class> or <class>.all()
@@ -138,7 +138,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             objl = []
-            for obj in storage.all().values():
+            for obj in FileStorage.all().values():
                 if len(argl) > 0 and argl[0] == obj.__class__.__name__:
                     objl.append(obj.__str__())
                 elif len(argl) == 0:
@@ -150,7 +150,7 @@ class HBNBCommand(cmd.Cmd):
         Retrieve the number of instances of a given class."""
         argl = parse(arg)
         count = 0
-        for obj in storage.all().values():
+        for obj in FileStorage.all().values():
             if argl[0] == obj.__class__.__name__:
                 count += 1
         print(count)
@@ -162,7 +162,7 @@ class HBNBCommand(cmd.Cmd):
         Update a class instance of a given id by adding or updating
         a given attribute key/value pair or dictionary."""
         argl = parse(arg)
-        objdict = storage.all()
+        objdict = FileStorage.all()
 
         if len(argl) == 0:
             print("** class name missing **")
@@ -202,7 +202,7 @@ class HBNBCommand(cmd.Cmd):
                     obj.__dict__[k] = valtype(v)
                 else:
                     obj.__dict__[k] = v
-        storage.save()
+        FileStorage.save()
 
 
 if __name__ == "__main__":
