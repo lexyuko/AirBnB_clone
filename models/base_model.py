@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 
 """a class called base_model that defines ll common methods and attributes for other classes """
+
 import models
 from uuid import uuid4
 from datetime import datetime
 class BaseModel:
+
     """This is class called basemodel for HBnB project"""
     def __int__(self, *args, **kwargs):
         """initialize a new basemodel
@@ -14,7 +16,7 @@ class BaseModel:
             **Kwargs (dict): key/value pairs of attributes
         """
         dformat = "%Y-%m-%dT%H:%M:%S.%f"
-        self.id = st(uuid4())
+        self.id = str(uuid4())
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
 
@@ -34,7 +36,7 @@ class BaseModel:
         models.storage.save()
 
     def to_dict(self):
-        """Rturn the dictionary of the basemodel instance.
+        """Return the dictionary of the basemodel instance.
         includes the key/value pair __class__ representing
         the class name of the object.
         """
