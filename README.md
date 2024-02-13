@@ -1,4 +1,6 @@
+![image](https://github.com/lexyuko/AirBnB_clone/assets/140617137/93f40843-e50e-47ac-91bd-24ce2da4638a)
 
+![image](https://github.com/lexyuko/AirBnB_clone/assets/140617137/1fe6ef44-f47d-4b11-8a64-7575f0048bcb)
 
 ## Description :house:
 
