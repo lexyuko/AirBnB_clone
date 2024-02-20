@@ -81,3 +81,47 @@ h4{
     font-weight: 400;
     font-size: 14px;
 }
+
+
+ /* Maintain shape of search bar as screen gets smaller */
+ @media only screen and (max-width: 1000px) {
+    .filters {
+      width: 95%;
+      margin: 0 auto;
+    }
+  }
+  
+  /* Swap to vertical layout for small screens */
+  @media only screen and (max-width: 720px) {
+    .filters {
+      display: flex;
+      flex-direction: column;
+      height: 210px;
+    }
+  
+    button{
+      order: 2;
+      position: relative;
+      left: 68%
+      
+  }
+    .filters .locations,
+    .filters .amenities {
+      height: 70px;
+      width: 100%;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    .filters .locations:hover .popover,
+    .filters .amenities:hover .popover {
+      position: relative;
+      width: 50%;
+      z-index: 1;
+    }
+  
+    .filters .amenities:hover {
+      border-top: 1px solid #ddd;
+    }
+  }
+  
+ 

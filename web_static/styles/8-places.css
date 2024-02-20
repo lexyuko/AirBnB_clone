@@ -97,3 +97,6 @@ article h2 {
 footer {
     position: relative;
 }
+strong{
+    font-weight: bold;
+}

@@ -1,0 +1,149 @@
+.filters{
+
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.filters:before,
+.filters:after {
+  content: "";
+  display: table;
+}
+
+.filters:after {
+  clear: both;
+}
+
+/* .filters {
+  *zoom: 1;
+} */
+
+button{
+    float: right;
+    font-size: 18px;
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+    height: 48px;
+    width: 20%;
+    border: none;
+    border-radius: 4px;
+    margin: 11px 30px;
+    
+}
+
+button:hover{
+    opacity: 90%;
+}
+
+.locations{
+    border-right: 1px solid #DDDDDD;
+}
+
+.filters .locations,
+ .filters .amenities{
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 25%;
+}
+.filters .locations:hover,
+  .filters .amenities:hover {
+    background-color: #fafafa;
+  } 
+
+ .filters .popover{
+    display: none;
+    width: 100%;
+    background-color: #fafafa;
+    border:1px solid #DDDDDD;
+    border-radius: 4px;
+    position: absolute;
+}
+
+.filters .locations:hover .popover,
+.filters .amenities:hover .popover
+{
+    display:block;
+}
+
+.filters .locations ul{
+    padding: 6px 0 6px 0;
+    list-style: none;
+}
+
+.filters .locations li{
+    margin: 0  auto 6px 3em;
+}
+
+.filters .amenities ul{
+margin: 12px auto 12px 30px;
+list-style: none;
+}
+
+
+h2{
+    font-size: 16px;
+}
+h3{
+    font-weight: 600;
+}
+h4{
+    font-weight: 400;
+    font-size: 14px;
+}
+.filters h2,
+.filters h3,
+.filters h4 {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+
+ /* Maintain shape of search bar as screen gets smaller */
+ @media only screen and (max-width: 1000px) {
+    .filters {
+      width: 95%;
+      margin: 0 auto;
+    }
+  }
+
+  
+  /* Swap to vertical layout for small screens */
+  @media only screen and (max-width: 720px) {
+    .filters {
+      flex-direction: column;
+      display: flex;
+      height: 210px;
+    }
+
+    button{
+      order: 2;
+      position: relative;
+      left: 68%
+      
+  }
+    
+    .filters .locations,
+    .filters .amenities {
+      height: 70px;
+      width: 100%;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    .filters .locations:hover .popover,
+    .filters .amenities:hover .popover {
+      position: relative;
+      width: 50%;
+      z-index: 1;
+    }
+  
+    .filters .amenities:hover {
+      border-top: 1px solid #ddd;
+    }
+  }
+  
+ 
